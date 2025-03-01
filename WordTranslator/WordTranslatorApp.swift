@@ -1,17 +1,14 @@
-//
-//  WordTranslatorApp.swift
-//  WordTranslator
-//
-//  Created by Henrik Hao on 1/3/2025.
-//
-
 import SwiftUI
 
 @main
 struct WordTranslatorApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(minWidth: 500, minHeight: 300)
         }
+        .windowStyle(HiddenTitleBarWindowStyle())
     }
 }
