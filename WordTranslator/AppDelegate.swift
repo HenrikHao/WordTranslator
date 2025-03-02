@@ -1,13 +1,16 @@
 import Cocoa
-
+// Handles application lifecyle
 class AppDelegate: NSObject, NSApplicationDelegate {
+    // hold a reference to the app's menu bar item
     var statusItem: NSStatusItem?
     
+    // This function sets up the status bar item and check the necessary accessibility
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupStatusBarItem()
         checkAccessibilityPermissions()
     }
     
+    // Set up the icon in the bar
     private func setupStatusBarItem() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         
@@ -23,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem?.menu = menu
     }
     
+    // @objc attribute makes these methods available to objective-c runtime (required for selector-based actions)
     @objc private func openSettings() {
         NSApp.activate(ignoringOtherApps: true)
         NSApp.windows.first?.makeKeyAndOrderFront(nil)
@@ -32,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.terminate(nil)
     }
 
+    // Check necessary accessibility
     private func checkAccessibilityPermissions() {
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
         let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)

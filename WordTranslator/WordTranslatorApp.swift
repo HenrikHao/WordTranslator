@@ -1,5 +1,7 @@
 import SwiftUI
 
+
+// Entry Point of the project
 @main
 struct WordTranslatorApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
